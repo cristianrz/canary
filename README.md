@@ -35,7 +35,7 @@ Alive
 But if any of the listening ports is queried:
 
 ```terminal
-$ curl 192.168.1.44:80"
+$ curl 192.168.1.44:80
 curl: (7) Failed to connect to localhost port 80: Connection refused
 $ ssh 192.168.1.44
 ssh: connect to host 192.168.1.44 port 22: Connection refused
@@ -44,7 +44,7 @@ ssh: connect to host 192.168.1.44 port 22: Connection refused
 Then the canary dies:
 
 ```terminal
-$ curl 192.168.1.44:8321"
+$ curl 192.168.1.44:8321
 curl: (7) Failed to connect to localhost port 8321: Connection refused
 ```
 
