@@ -48,3 +48,10 @@ $ curl 192.168.1.44:8321"
 curl: (7) Failed to connect to localhost port 8321: Connection refused
 ```
 
+Then we can check from the logs who killed it:
+
+```terminal
+# grep "Connection from" /var/log/canary.log
+Ncat: Connection from 192.168.1.58:41004.
+```
+
