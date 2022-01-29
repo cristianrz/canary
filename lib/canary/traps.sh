@@ -24,6 +24,7 @@ die() {
 trap 'die' EXIT
 
 echo "$(date): Starting canary" > "$LOGDIR/canary.log"
+chmod 600 "$LOGDIR/canary.log"
 
 touch "$VARDIR/alive"
 
