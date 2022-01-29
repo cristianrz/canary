@@ -1,0 +1,19 @@
+#!/bin/sh
+
+HERE="$(dirname "$(readlink -f "$0")")"
+export HERE
+
+set -eu
+
+case "$(id -u)" in
+	0) : ;;
+	*) echo "script must be run as root" && exit 1 ;;
+esac
+
+sh "$HERE/../lib/canary/traps.sh" &
+proc="$!"
+
+trap 'kill $proc' EXIT
+
+sh "$HERE/../lib/canary/alive_check.sh"
+
