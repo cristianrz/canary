@@ -7,13 +7,12 @@ set -eu
 
 case "$(id -u)" in
 	0) : ;;
-	*) echo "script must be run as root" && exit 1 ;;
+	*) echo "canary must be run as root" && exit 1 ;;
 esac
 
 sh "$HERE/../lib/canary/traps.sh" &
 proc="$!"
 
-trap 'kill $proc' EXIT
+trap 'kill $proc 2>/dev/null || true' EXIT
 
 sh "$HERE/../lib/canary/alive_check.sh"
-
